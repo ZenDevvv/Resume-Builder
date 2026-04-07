@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "candidate_name": "Zen Andrei Obrero",
+    "source_pdf": "Zen Obrero RESUME.pdf",
+    "extracted_on": "2026-04-06",
+    "source_of_truth_policy": "Facts in this file come from the source PDF. Tailored resumes may reorder and lightly rephrase content, but should not invent new facts."
+  },
+  "basics": {
+    "name": "Zen Andrei Obrero",
+    "location": "Dasmarinas, Cavite",
+    "phone": "09068575015",
+    "email": "zenandreiobrero777@gmail.com",
+    "links": [
+      {
+        "label": "Portfolio",
+        "url": "https://zendev-portfolio.netlify.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ZenDevvv"
+      }
+    ]
+  },
+  "fact_bank": {
+    "core_positioning": [
+      "Fullstack developer specializing in frontend engineering with React, TypeScript, and the MERN stack.",
+      "Builds scalable multi-tenant enterprise applications from UI architecture to backend data modeling.",
+      "Uses an AI-assisted workflow with Claude Opus, Codex, and Google Stitch / Gemini Pro 3 while maintaining code ownership and engineering rigor.",
+      "Currently shipping 6+ production platforms at Uzaro Solutions across IoT, education, hotel management, and ERP domains."
+    ],
+    "priority_themes": [
+      "Frontend engineering",
+      "React and TypeScript",
+      "Fullstack delivery",
+      "Multi-tenant architecture",
+      "Enterprise applications",
+      "IoT dashboard integration",
+      "Testing and CI/CD",
+      "Agile delivery"
+    ],
+    "quantified_highlights": [
+      "Shared design patterns and type-safe contracts adopted across 8+ company-wide projects.",
+      "Unit and integration tests in Jest reduced post-release bug reports by about 25%.",
+      "6+ concurrent platform builds across IoT, LMS, HMS, HRIS, Inventory, and Order Management.",
+      "50+ connected IoT endpoints with sub-500ms response latency.",
+      "3 organizational tenants in the LMS project.",
+      "200+ student accounts in ALMA.",
+      "15+ instructors and 40+ classes supported in ALMA.",
+      "6,000+ employee records handled in the HRIS module."
+    ]
+  },
+  "summary_candidates": [
+    {
+      "id": "frontend_fullstack",
+      "text": "Fullstack developer with a frontend engineering focus in React and TypeScript, building multi-tenant enterprise platforms across UI architecture, backend modeling, testing, and delivery."
+    },
+    {
+      "id": "enterprise_platforms",
+      "text": "Developer experienced in shipping enterprise platforms across IoT, education, hotel management, and ERP domains with reusable systems, type-safe contracts, and production delivery workflows."
+    },
+    {
+      "id": "product_delivery",
+      "text": "Production-oriented engineer who combines React, Node.js, MongoDB, Prisma, and testing workflows to deliver scalable internal and client-facing software."
+    }
+  ],
+  "work_experience": [
+    {
+      "company": "Uzaro Solutions Technology Inc.",
+      "location": "Quezon City",
+      "role": "Technology Developer",
+      "date_range": "Nov 2024 - Present",
+      "bullets": [
+        "Developed production-grade frontend interfaces and reusable component libraries using React and TypeScript, establishing shared design patterns and type-safe contracts adopted across 8+ company-wide projects.",
+        "Designed backend data models in MongoDB and Prisma that unified frontend-backend contracts, conducted code reviews on team PRs, and managed CI/CD pipelines via GitHub Actions with Firebase deployment while authoring unit and integration tests in Jest that reduced post-release bug reports by about 25%.",
+        "Drove sprint delivery across 6+ concurrent platform builds in IoT, LMS, HMS, HRIS, Inventory, and Order Management using GitHub Projects and a custom-built PMS in an Agile environment, accelerating delivery through AI-assisted prototyping and scaffolding with Claude Opus, Codex, and Gemini Pro 3.",
+        "Integrated smart door locks, switch and outlet relays, and IoT gateways via REST APIs into a centralized React dashboard, enabling real-time device control and monitoring for 50+ connected endpoints with sub-500ms response latency."
+      ]
+    },
+    {
+      "company": "IPSolutions Inc.",
+      "location": "Pasig City",
+      "role": "IT Intern",
+      "date_range": "Mar 2024 - May 2024",
+      "bullets": [
+        "Designed and delivered 3 responsive client-facing landing pages including the company's main website using HTML, CSS, and Bootstrap, with each page passing cross-browser QA on first review during the 3-month internship.",
+        "Collaborated with the development team to implement features following SDLC best practices, gaining foundational experience in Git-based versioning and team delivery workflows."
+      ]
+    }
+  ],
+  "professional_development": [
+    "From Jun 2024 to Oct 2024, dedicated 8+ hours daily to self-study in TypeScript, React, Node.js, and MongoDB while transitioning from internship work into a professional fullstack role."
+  ],
+  "project_experience": [
+    {
+      "name": "ALMA (Alternative Learning Management App)",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Prisma ORM",
+        "Zod",
+        "TanStack Query",
+        "Zustand",
+        "JWT",
+        "Tailwind CSS"
+      ],
+      "bullets": [
+        "Architected a multi-tenant LMS serving 3 organizational tenants with role-based access for admins, instructors, and 200+ student accounts, implementing tenant-isolated data schemas and JWT-based authentication.",
+        "Built an assessment engine with automatic quiz scoring, grade computation, and analytics dashboards tracking learner performance across courses, reducing manual grading workload for instructors.",
+        "Developed attendance tracking and gradebook modules used by 15+ instructors across 40+ classes, enabling real-time class record management and automated academic report generation per tenant."
+      ]
+    },
+    {
+      "name": "HMS Reservation System",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Prisma ORM"
+      ],
+      "bullets": [
+        "Built a multi-tenant hotel management system enabling organizations to manage rooms, pricing, users, and reservations with tenant-isolated data architecture.",
+        "Designed and implemented core booking functionality including room type configuration, dynamic pricing rules, and full reservation lifecycle management from search to checkout."
+      ]
+    },
+    {
+      "name": "ERP Platform Suite (Uzaro Solutions)",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Prisma ORM",
+        "Zod",
+        "JWT"
+      ],
+      "bullets": [
+        "Architected and developed interconnected ERP modules as part of a multi-tenant enterprise platform.",
+        "Built an HRIS module covering payroll, time management, onboarding, attendance, and personnel records, handling 6,000+ employee records with role-scoped visibility across tenants.",
+        "Developed a GS1-compliant inventory system with barcode and SKU identification, real-time stock tracking, and low-stock alerting, reducing manual stock audit time and enabling automated procurement triggers.",
+        "Built an employee partnership e-commerce module handling product catalogs, cart workflows, and order lifecycle tracking with buyer, vendor, and admin role separation.",
+        "Contributed additional modules for project management and supply chain management integrated with inventory and order systems for end-to-end procurement-to-fulfillment workflows."
+      ]
+    }
+  ],
+  "technical_skills": {
+    "Frontend": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "HTML/CSS",
+      "Zustand",
+      "TanStack Query",
+      "Socket.io"
+    ],
+    "Backend": [
+      "Node.js",
+      "Express",
+      "REST API Design",
+      "JWT Authentication",
+      "Zod"
+    ],
+    "Databases & ORM": [
+      "MongoDB",
+      "MySQL",
+      "Prisma ORM"
+    ],
+    "Testing": [
+      "Jest",
+      "Playwright"
+    ],
+    "DevOps & Deployment": [
+      "Git",
+      "GitHub",
+      "GitHub Actions (CI/CD)",
+      "Firebase Hosting",
+      "Docker"
+    ],
+    "Languages": [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Java",
+      "C++",
+      "PHP"
+    ],
+    "Project Management": [
+      "GitHub Projects",
+      "Custom PMS Tool",
+      "Agile/Scrum"
+    ],
+    "AI-Augmented Workflow": [
+      "Claude Opus 4.6 (architecture, guidelines, prompt engineering)",
+      "Codex (backend logic, code generation)",
+      "Google Stitch / Gemini Pro 3 (UI/UX prototyping)"
+    ],
+    "Domain Experience": [
+      "IoT Smart Devices",
+      "Education/LMS",
+      "Hotel Management",
+      "ERP (HRIS, Inventory/GS1, Order Management, Supply Chain, Project Management)"
+    ]
+  },
+  "education": [
+    {
+      "school": "Biliran Province State University",
+      "location": "Naval, Biliran",
+      "degree": "Bachelor of Science in Computer Science",
+      "honors": "With Honors",
+      "graduation": "Graduated May 2024",
+      "bullets": [
+        "Algolympics Champion - 1st Place, campus-wide algorithm programming contest (2nd Year).",
+        "Relevant coursework: Data Structures & Algorithms, Database Systems, Software Engineering, Object-Oriented Programming."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "variant": "fullstack",
+    "target_role": "Fullstack Developer",
+    "source": "data/master_resume.json",
+    "prompt_summary": "Balanced for fullstack roles emphasizing React, Node.js, MongoDB, Prisma, testing, and end-to-end ownership."
+  },
+  "basics": {
+    "name": "Zen Andrei Obrero",
+    "location": "Dasmarinas, Cavite",
+    "phone": "09068575015",
+    "email": "zenandreiobrero777@gmail.com",
+    "links": [
+      {
+        "label": "Portfolio",
+        "url": "https://zendev-portfolio.netlify.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ZenDevvv"
+      }
+    ]
+  },
+  "headline": "Fullstack Developer | React, Node.js, MongoDB, Prisma",
+  "summary": [
+    "Production-oriented fullstack developer experienced in delivering multi-tenant applications across frontend architecture, backend data modeling, testing, and deployment.",
+    "Ships React and TypeScript user experiences alongside Node.js, MongoDB, Prisma, and REST-based integrations across IoT, LMS, HMS, and ERP platforms."
+  ],
+  "experience": [
+    {
+      "company": "Uzaro Solutions Technology Inc.",
+      "location": "Quezon City",
+      "role": "Technology Developer",
+      "date_range": "Nov 2024 - Present",
+      "bullets": [
+        "Built production-grade fullstack features across 6+ concurrent platforms spanning IoT, LMS, HMS, HRIS, Inventory, and Order Management in an Agile delivery environment.",
+        "Developed React and TypeScript interfaces plus reusable component systems adopted across 8+ company-wide projects.",
+        "Designed MongoDB and Prisma data models that aligned frontend-backend contracts, supported team PR reviews, and strengthened shared platform consistency.",
+        "Managed CI/CD workflows through GitHub Actions with Firebase deployment and wrote Jest unit and integration tests that reduced post-release bug reports by about 25%.",
+        "Integrated IoT hardware endpoints into a centralized React dashboard for real-time control and monitoring across 50+ connected devices with sub-500ms response latency."
+      ]
+    },
+    {
+      "company": "IPSolutions Inc.",
+      "location": "Pasig City",
+      "role": "IT Intern",
+      "date_range": "Mar 2024 - May 2024",
+      "bullets": [
+        "Delivered 3 responsive web pages using HTML, CSS, and Bootstrap, including the company's main website.",
+        "Worked with the development team under SDLC practices and gained foundational experience in Git-based collaboration."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "ALMA (Alternative Learning Management App)",
+      "subtitle": "Multi-tenant LMS with authentication, assessments, and academic workflows",
+      "bullets": [
+        "Architected a multi-tenant LMS serving 3 organizational tenants with JWT-based authentication and role-based access for admins, instructors, and 200+ student accounts.",
+        "Built assessment, scoring, analytics, attendance, and gradebook features for 15+ instructors across 40+ classes."
+      ]
+    },
+    {
+      "name": "HMS Reservation System",
+      "subtitle": "Hotel reservation workflow from search to checkout",
+      "bullets": [
+        "Built a multi-tenant hotel management system for rooms, pricing, users, and reservations with tenant-isolated data architecture.",
+        "Implemented room configuration, dynamic pricing rules, and reservation lifecycle flows from search to checkout."
+      ]
+    },
+    {
+      "name": "ERP Platform Suite (Uzaro Solutions)",
+      "subtitle": "Connected enterprise modules for HRIS, inventory, order management, and supply chain",
+      "bullets": [
+        "Developed HRIS, inventory, order management, and supporting enterprise modules inside a multi-tenant platform architecture.",
+        "Handled high-volume product areas including 6,000+ employee records in HRIS and GS1-compliant inventory workflows with barcode and SKU tracking."
+      ]
+    }
+  ],
+  "skills": {
+    "Frontend": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "HTML/CSS",
+      "Zustand",
+      "TanStack Query"
+    ],
+    "Backend": [
+      "Node.js",
+      "Express",
+      "REST API Design",
+      "JWT Authentication",
+      "Zod"
+    ],
+    "Databases & ORM": [
+      "MongoDB",
+      "MySQL",
+      "Prisma ORM"
+    ],
+    "Testing & DevOps": [
+      "Jest",
+      "Playwright",
+      "Git",
+      "GitHub",
+      "GitHub Actions (CI/CD)",
+      "Firebase Hosting",
+      "Docker"
+    ]
+  },
+  "education": [
+    {
+      "school": "Biliran Province State University",
+      "location": "Naval, Biliran",
+      "degree": "Bachelor of Science in Computer Science",
+      "details": "With Honors | Graduated May 2024",
+      "bullets": [
+        "Algolympics Champion - 1st Place, campus-wide algorithm programming contest (2nd Year).",
+        "Relevant coursework: Data Structures & Algorithms, Database Systems, Software Engineering, Object-Oriented Programming."
+      ]
+    }
+  ]
+}

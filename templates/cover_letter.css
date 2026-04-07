@@ -1,0 +1,136 @@
+:root {
+  --ink: #152331;
+  --muted: #5a6b7c;
+  --accent: #0f5fa8;
+  --line: #d6e0ea;
+  --page: #ffffff;
+  --surface: #f5f8fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #eef4f8;
+  color: var(--ink);
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.58;
+}
+
+body {
+  padding: 28px;
+}
+
+.letter-page {
+  width: 8.27in;
+  min-height: 11.69in;
+  margin: 0 auto;
+  background: var(--page);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(13, 35, 58, 0.08);
+  padding: 44px 48px 48px;
+}
+
+.letter-header {
+  border-bottom: 2px solid #dfeaf5;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+}
+
+.letter-name {
+  margin: 0;
+  font-size: 29px;
+  line-height: 1.08;
+  font-weight: 760;
+  letter-spacing: -0.04em;
+}
+
+.letter-role {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 680;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.letter-meta,
+.letter-target {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.letter-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.letter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.letter-link span {
+  color: var(--muted);
+  font-weight: 550;
+}
+
+.letter-body p,
+.letter-body ul,
+.letter-body ol,
+.letter-body h1,
+.letter-body h2 {
+  margin: 0 0 14px;
+}
+
+.letter-body h1,
+.letter-body h2 {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.letter-body p,
+.letter-body li {
+  font-size: 13px;
+}
+
+.letter-body ul,
+.letter-body ol {
+  padding-left: 20px;
+}
+
+@page {
+  size: A4;
+  margin: 0.35in;
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .letter-page {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}

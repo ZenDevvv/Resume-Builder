@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "variant": "frontend-focused",
+    "target_role": "Frontend Engineer",
+    "source": "data/master_resume.json",
+    "prompt_summary": "Optimized for frontend engineering roles centered on React, TypeScript, dashboards, and reusable UI systems."
+  },
+  "basics": {
+    "name": "Zen Andrei Obrero",
+    "location": "Dasmarinas, Cavite",
+    "phone": "09068575015",
+    "email": "zenandreiobrero777@gmail.com",
+    "links": [
+      {
+        "label": "Portfolio",
+        "url": "https://zendev-portfolio.netlify.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ZenDevvv"
+      }
+    ]
+  },
+  "headline": "Frontend Engineer | React, TypeScript, Enterprise UI Systems",
+  "summary": [
+    "Fullstack developer with a frontend engineering focus, shipping production React and TypeScript applications across IoT, education, hotel management, and ERP products.",
+    "Builds reusable component systems, multi-tenant dashboards, and type-safe integrations while contributing across backend contracts, testing, and deployment workflows."
+  ],
+  "experience": [
+    {
+      "company": "Uzaro Solutions Technology Inc.",
+      "location": "Quezon City",
+      "role": "Technology Developer",
+      "date_range": "Nov 2024 - Present",
+      "bullets": [
+        "Developed production-grade React and TypeScript interfaces plus reusable component libraries, establishing shared design patterns and type-safe contracts adopted across 8+ company-wide projects.",
+        "Integrated smart door locks, switch and outlet relays, and IoT gateways into a centralized React dashboard that supports real-time control and monitoring for 50+ connected endpoints with sub-500ms response latency.",
+        "Aligned frontend and backend contracts through MongoDB and Prisma data modeling, PR reviews, CI/CD workflows in GitHub Actions, Firebase deployment, and Jest-based testing that reduced post-release bug reports by about 25%.",
+        "Supported sprint delivery across 6+ concurrent platforms in an Agile environment, using AI-assisted prototyping to accelerate implementation while maintaining code ownership."
+      ]
+    },
+    {
+      "company": "IPSolutions Inc.",
+      "location": "Pasig City",
+      "role": "IT Intern",
+      "date_range": "Mar 2024 - May 2024",
+      "bullets": [
+        "Designed and delivered 3 responsive client-facing landing pages including the company's main website using HTML, CSS, and Bootstrap, with all pages passing cross-browser QA on first review.",
+        "Collaborated with the development team under SDLC practices, building early experience in Git-based workflows and team delivery."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "ALMA (Alternative Learning Management App)",
+      "subtitle": "Multi-tenant LMS with dashboards, attendance, and gradebook workflows",
+      "bullets": [
+        "Architected a multi-tenant LMS serving 3 organizational tenants with role-based access for admins, instructors, and 200+ student accounts.",
+        "Built analytics dashboards, assessment flows, automatic quiz scoring, and grade computation features that reduced manual grading for instructors.",
+        "Developed attendance tracking and gradebook modules used by 15+ instructors across 40+ classes for real-time class record management and automated academic reports."
+      ]
+    },
+    {
+      "name": "IoT Device Dashboard",
+      "subtitle": "Centralized React interface for smart-device control and monitoring",
+      "bullets": [
+        "Integrated REST-connected smart door locks, relays, and IoT gateways into a centralized dashboard experience.",
+        "Delivered real-time device control and monitoring for 50+ endpoints with sub-500ms response latency."
+      ]
+    },
+    {
+      "name": "ERP Platform Suite (Uzaro Solutions)",
+      "subtitle": "Shared product surfaces across HRIS, inventory, and order management",
+      "bullets": [
+        "Contributed reusable product UI and contract-aligned workflows across HRIS, inventory, order management, and related enterprise modules.",
+        "Worked inside a multi-tenant platform architecture while balancing product delivery across several concurrent systems."
+      ]
+    }
+  ],
+  "skills": {
+    "Frontend": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "HTML/CSS",
+      "Zustand",
+      "TanStack Query",
+      "Socket.io"
+    ],
+    "Testing & Delivery": [
+      "Jest",
+      "Playwright",
+      "GitHub Actions (CI/CD)",
+      "Firebase Hosting",
+      "Git",
+      "GitHub"
+    ],
+    "Backend Collaboration": [
+      "Node.js",
+      "Express",
+      "REST API Design",
+      "JWT Authentication",
+      "Zod",
+      "MongoDB",
+      "Prisma ORM"
+    ],
+    "Domain Experience": [
+      "IoT Smart Devices",
+      "Education/LMS",
+      "Hotel Management",
+      "ERP"
+    ]
+  },
+  "education": [
+    {
+      "school": "Biliran Province State University",
+      "location": "Naval, Biliran",
+      "degree": "Bachelor of Science in Computer Science",
+      "details": "With Honors | Graduated May 2024",
+      "bullets": [
+        "Algolympics Champion - 1st Place, campus-wide algorithm programming contest (2nd Year).",
+        "Relevant coursework: Data Structures & Algorithms, Database Systems, Software Engineering, Object-Oriented Programming."
+      ]
+    }
+  ]
+}
