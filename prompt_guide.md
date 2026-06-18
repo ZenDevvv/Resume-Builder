@@ -10,11 +10,12 @@ The default workflow is:
 
 1. Read `data/master_resume.json`.
 2. Read this guide.
-3. Infer the target role and company from the job description or user prompt when possible.
-4. Create a per-application folder in `generated/`.
-5. Save the tailored resume JSON, cover-letter Markdown, and request snapshot with the next version number.
-6. Build HTML with `scripts/build_resume.py` and `scripts/build_cover_letter.py`.
-7. Render PDFs with `scripts/render_pdf.py`.
+3. Read the request file under `requests/*.md` and extract role/company context plus full job description.
+4. Generate and save:
+   - `requests/<name>.resume.json`
+   - `requests/<name>.cover-letter.md`
+5. Run `python scripts/run_request_package.py --request requests/<name>.md`.
+6. Return the generated package folder path, version, and short summary of tailoring decisions.
 
 ## Package Naming Rules
 
