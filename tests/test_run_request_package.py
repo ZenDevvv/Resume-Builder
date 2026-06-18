@@ -1,4 +1,3 @@
-import json
 import sys
 import tempfile
 import unittest
@@ -11,30 +10,6 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import run_request_package as runner  # noqa: E402
-
-
-def valid_resume_payload():
-    return {
-        "basics": {
-            "name": "Test User",
-            "location": "Test City",
-            "phone": "123",
-            "email": "test@example.com",
-            "links": [{"label": "GitHub", "url": "https://example.com"}],
-        },
-        "headline": "Frontend Engineer",
-        "summary": ["One summary paragraph."],
-        "experience": [
-            {
-                "company": "Test Company",
-                "date_range": "2024 - Present",
-                "bullets": ["Did work."],
-            }
-        ],
-        "projects": [{"name": "Project One", "bullets": ["Built feature."]}],
-        "skills": {"Frontend": ["React", "TypeScript"]},
-        "education": [{"school": "Test University"}],
-    }
 
 
 class ParseFrontmatterTests(unittest.TestCase):
@@ -91,17 +66,6 @@ class ValidationTests(unittest.TestCase):
             with self.assertRaises(runner.ValidationError):
                 runner.validate_request_file(path)
 
-    def test_validate_input_artifacts_happy_path(self):
-        with tempfile.TemporaryDirectory() as temp_dir:
-            temp = Path(temp_dir)
-            resume = temp / "job.resume.json"
-            cover = temp / "job.cover-letter.md"
-            resume.write_text(json.dumps(valid_resume_payload()), encoding="utf-8")
-            cover.write_text("Dear Hiring Team,\n\nHello.", encoding="utf-8")
-
-            runner.validate_input_artifacts(resume, cover)
-
-
 class IntegrationFlowTests(unittest.TestCase):
     def test_main_builds_and_executes_package_command(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -116,15 +80,6 @@ class IntegrationFlowTests(unittest.TestCase):
                 "---\n\n"
                 "## Job Description\n"
                 "Join Acme Systems as a frontend engineer.\n",
-                encoding="utf-8",
-            )
-
-            (requests_dir / "test-job.resume.json").write_text(
-                json.dumps(valid_resume_payload()),
-                encoding="utf-8",
-            )
-            (requests_dir / "test-job.cover-letter.md").write_text(
-                "Dear Hiring Team,\n\nBody.",
                 encoding="utf-8",
             )
 

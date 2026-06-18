@@ -6,28 +6,40 @@ Use this guide whenever the user asks for a new application package from the mas
 
 Create a targeted resume and cover letter that match the user's hiring goal while staying faithful to `data/master_resume.json`.
 
-The default workflow is:
+The default workflow is two-stage:
 
+**Stage 1 – Create the request (one .md per job, written to requests/)**
+- User gives you a job description (or you read one).
+- You create a request markdown file (frontmatter + full Job Description section) and save it as `requests/<name>.md`.
+- This is the single request md for that job/company.
+
+**Stage 2 – Generate actual resume + cover letter from a request (outputs go to generated/)**
 1. Read `data/master_resume.json`.
 2. Read this guide.
-3. Read the request file under `requests/*.md` and extract role/company context plus full job description.
-4. Generate and save:
-   - `requests/<name>.resume.json`
-   - `requests/<name>.cover-letter.md`
-5. Run `python scripts/run_request_package.py --request requests/<name>.md`.
-6. Return the generated package folder path, version, and short summary of tailoring decisions.
+3. Read the relevant request markdown (from `requests/<name>.md` or the snapshot in `generated/<slug>/request.vNNN.md`).
+4. Compute the target slug (see "Slug Rules" below) and generate:
+   - `generated/<slug>/resume.json`
+   - `generated/<slug>/cover-letter.md`
+5. (Optional) If the request snapshot is not yet recorded, run `python scripts/run_request_package.py --request requests/<name>.md`.
+6. Return the paths under `generated/<slug>/` + short summary of tailoring decisions.
 
-## Package Naming Rules
+## Slug Rules (for generated/ folders)
 
-- Use a filesystem-safe lowercase slug.
-- If both company and role are known, use `company-role`.
-- If the company is missing, use the role only.
-- Repeated runs for the same slug should stay in the same folder and increment the version number.
+When writing resume and cover letter outputs in Stage 2, place them under `generated/<slug>/` using these rules (identical to the code in `scripts/package_application.py`):
+
+- Lowercase the value.
+- Replace any sequence of non-alphanumeric characters with a single `-`.
+- If both company and role: `<slug(company)>-<slug(role)>`
+- If only role: `<slug(role)>`
 
 Examples:
 
-- `generated/acme-frontend-engineer/`
-- `generated/fullstack-developer/`
+- Company "OVATech OPC" + role "Web Developer" → `generated/ovatech-opc-web-developer/`
+- Role "Frontend Engineer" → `generated/frontend-engineer/`
+
+The live request itself lives in `requests/<name>.md`. Snapshots of it may appear as `request.vNNN.md` inside the generated folder.
+
+**Important:** `requests/` contains **only** the request `.md` files (one per job) + the template. The tailored `resume.json` and `cover-letter.md` (and their HTML/PDF renders) belong in the corresponding `generated/<slug>/` folder.
 
 ## Non-Negotiable Rules
 
@@ -58,11 +70,11 @@ Examples:
 - Rewriting in a way that changes the factual meaning of dates, responsibilities, or results.
 - Claiming motivation, personal background, or company knowledge that the prompt does not support.
 
-## Tailoring Algorithm
+## Tailoring Algorithm (for resume + cover letter stage)
 
-### 1. Parse the user request
+### 1. Parse the request (the job description)
 
-Extract:
+Read the chosen request file (prefer the versioned one from generated/ if it exists). Extract:
 
 - target role or hiring goal
 - company name if identifiable
@@ -87,11 +99,12 @@ Prioritize evidence in this order unless the user asks otherwise:
 - Preserve numbers when present.
 - If a sentence gets longer, it must also get clearer.
 
-### 4. Build both outputs
+### 4. Build the two actual output files (inside generated/)
 
-- Create a tailored resume JSON.
-- Create a tailored cover-letter Markdown file.
-- Write the original prompt or job-targeting instruction to `request.vNNN.md`.
+- Create a tailored resume JSON → `generated/<slug>/resume.json`
+- Create a tailored cover-letter Markdown → `generated/<slug>/cover-letter.md`
+
+After writing them, the visual deliverables (html + pdf) are produced by running the build scripts with paths pointing inside that same `generated/<slug>/` folder.
 
 ## Tailored Resume JSON Structure
 
@@ -205,12 +218,12 @@ Use this section order unless the prompt suggests a better one:
 
 ## Final Checklist
 
-Before building the PDFs, confirm:
+Confirm:
 
 - every claim is traceable to `data/master_resume.json`
-- the summary matches the prompt
+- the summary / letter matches the request (job description)
 - the most relevant bullets appear first
 - the cover letter matches the target role and company context when known
-- the final JSON and Markdown are complete
-- the outputs are stored in the correct package folder and version
-- all text uses black only (differentiate via boldness and italic, no colored text)
+- The request .md lives in `requests/<name>.md`
+- The tailored sources were written to `generated/<slug>/resume.json` and `generated/<slug>/cover-letter.md`
+- All text uses black only (differentiate via boldness and italic, no colored text)

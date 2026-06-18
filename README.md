@@ -1,7 +1,11 @@
 # Resume Editor Workflow
 
-This workspace is a prompt-driven resume and cover-letter package builder.  
-You provide one request markdown file plus one instruction prompt tag, and an agent (Codex or similar) generates tailored source files and final PDFs in a versioned output folder.
+This workspace is a prompt-driven system where:
+
+- You create **one request .md per job** (the job description + frontmatter) in the `requests/` folder.
+- In a follow-up step you generate the tailored **resume** and **cover letter** based on that request; those outputs are placed inside `generated/<company-or-role-slug>/`.
+
+**Core rule:** `requests/` holds **exactly one request markdown file per job/company** (plus the template). All tailored resume + cover letter outputs (JSON + MD sources + their rendered HTML/PDF) live under the matching folder in `generated/`.
 
 ## Core Files
 
@@ -12,29 +16,50 @@ You provide one request markdown file plus one instruction prompt tag, and an ag
 - `instructions/auto_builder_prompt.md`
   Standard execution prompt for agent-style AI.
 - `requests/request_template.md`
-  Template for per-job request files.
+  Template you copy to create a new per-job request.
+- `requests/<name>.md`
+  The single request markdown for one job (frontmatter + full Job Description). One per job.
 - `scripts/run_request_package.py`
-  Validation + orchestration entrypoint.
+  Validates a request and records a versioned snapshot (`request.vNNN.md`) into the corresponding generated/ folder.
 - `scripts/package_application.py`
-  Packaging/build/render pipeline.
+  Low-level helper that creates the job folder under generated/ and writes the request snapshot.
 
-## One-Prompt Agent Flow
+## Typical Usage (Two-Stage)
 
-1. Create a request file under `requests/` (copy `requests/request_template.md`).
-2. Ask the agent in one message using tagged files:
+**Stage 1 – Create the request (one .md per job in requests/)**
 
-   `Use @instructions/auto_builder_prompt.md and @requests/<name>.md`
+1. Prompt the agent with the pasted job description.  
+   The agent creates **one request markdown** under `requests/` (copy `request_template.md` first).
 
-3. Agent generates:
-   - `requests/<name>.resume.json`
-   - `requests/<name>.cover-letter.md`
-4. Agent runs:
+   Example result:
+   - `requests/ovatech-web-developer.md`
+
+2. (Recommended) Record/version the request:
 
 ```powershell
 python scripts/run_request_package.py --request requests/<name>.md
 ```
 
-5. Pipeline validates, versions, builds HTML, and renders PDFs in `generated/`.
+   This creates `generated/<slug>/` and writes `request.vNNN.md` (history of the job request).
+
+**Stage 2 – Generate resume + cover letter (outputs go into generated/)**
+
+3. In a separate prompt, point the agent at the request you just created (e.g. `requests/ovatech-web-developer.md` or the snapshot in generated) and say "generate the resume and cover letter for this job. Place the outputs inside the generated company folder."
+
+   The agent produces (directly under the job folder):
+   - `generated/<slug>/resume.json`
+   - `generated/<slug>/cover-letter.md`
+
+4. Build the visual outputs (HTML + PDF) from the sources that now live in generated/:
+
+```powershell
+python scripts/build_resume.py --input generated/<slug>/resume.json --output-html generated/<slug>/resume.html
+python scripts/build_cover_letter.py --input-md generated/<slug>/cover-letter.md --output-html generated/<slug>/cover-letter.html --role "..." --company "..."
+python scripts/render_pdf.py --html generated/<slug>/resume.html --pdf generated/<slug>/resume.pdf
+# repeat for cover-letter
+```
+
+Each request in `requests/` represents one job/company. All deliverables for that job live together in the matching `generated/<slug>/` folder.
 
 ## Request File Contract
 
@@ -48,29 +73,26 @@ Body sections:
 - Required: `## Job Description` (full JD text inline)
 - Optional: `## Extra Instructions`
 
-The packaging runner expects generated source files beside the request:
+The request file (in `requests/`) is the source of truth for "what job is this for".
 
-- `requests/<name>.resume.json`
-- `requests/<name>.cover-letter.md`
+The runner (`run_request_package.py`) only cares about the request itself.  
+Resume and cover letter sources are created in a later step and are placed directly inside the corresponding `generated/<slug>/` folder.
 
-## Output Structure
+## Output Structure (per-job generated/ folder)
 
-Each run writes to:
+For every job you create a request for, a folder is created under `generated/` using a slug (`company-role` or just `role`):
 
-- `generated/<company-role-slug>/` when company exists (frontmatter or inferred)
-- `generated/<role-slug>/` when company is missing
+`generated/<slug>/` contains the full package for that job:
 
-Versioned artifacts:
+- `request.vNNN.md` (versioned snapshots of the original request)
+- `resume.json` (tailored structured resume – written by the generator in Stage 2)
+- `cover-letter.md` (tailored cover letter – written by the generator in Stage 2)
+- `resume.html`, `resume.pdf`
+- `cover-letter.html`, `cover-letter.pdf`
 
-- `resume.vNNN.json`
-- `resume.vNNN.html`
-- `resume.vNNN.pdf`
-- `cover-letter.vNNN.md`
-- `cover-letter.vNNN.html`
-- `cover-letter.vNNN.pdf`
-- `request.vNNN.md`
+`requests/` itself only ever contains the live request markdown files (one per job) + the template. No resume or cover letter files belong there.
 
-Repeated runs increment version (`v001`, `v002`, ...).
+Repeated runs increment the version for request snapshots (`v001`, `v002`, ...). The current `resume.json` and `cover-letter.md` are the latest sources (non-versioned).
 
 ## Validation Behavior
 
@@ -78,23 +100,25 @@ Repeated runs increment version (`v001`, `v002`, ...).
 
 - request frontmatter is invalid or missing `role`
 - `## Job Description` is missing/empty
-- `requests/<name>.resume.json` is missing or structurally invalid
-- `requests/<name>.cover-letter.md` is missing or empty
+
+Resume and cover letter sources are **not** validated or required when recording the request (they are generated in Stage 2 and placed in the generated/ job folder).
 
 If `company` is not provided, it attempts conservative inference from the JD text.
 
-## Manual Packaging (Legacy)
+## Manual Recording of a Request
 
-You can still run the original packaging command directly:
+To create/refresh the generated job folder + record a snapshot of the request:
 
 ```powershell
 python scripts/package_application.py `
-  --resume-input samples/acme-frontend-engineer/resume.json `
-  --cover-letter-input samples/acme-frontend-engineer/cover-letter.md `
-  --role "Frontend Engineer" `
-  --company "Acme" `
-  --request-file samples/acme-frontend-engineer/request.md
+  --role "Web Developer" `
+  --company "OVATech OPC" `
+  --request-file requests/ovatech-web-developer.md
 ```
+
+This creates the folder (e.g. `generated/ovatech-opc-web-developer/`) and writes `request.vNNN.md`.
+
+After Stage 2 (when `resume.json` and `cover-letter.md` already exist inside the generated folder), you can run the build commands shown in the Typical Usage section.
 
 ## Re-extracting Source PDF
 
@@ -105,3 +129,5 @@ python scripts/extract_pdf_resume.py --input "Zen Obrero RESUME.pdf" --output ge
 ```
 
 Then manually update `data/master_resume.json` to keep it factual and structured.
+
+(Note: source_extract.json is an exception and lives in generated/ for inspection only.)

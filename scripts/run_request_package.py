@@ -1,5 +1,4 @@
 ﻿import argparse
-import json
 import re
 import subprocess
 import sys
@@ -234,51 +233,18 @@ def validate_request_file(request_path):
     return frontmatter, body, job_description
 
 
-def validate_input_artifacts(resume_json_path, cover_letter_path):
-    if not resume_json_path.exists():
-        raise ValidationError(
-            "Expected tailored resume JSON not found. "
-            f"Create '{resume_json_path.name}' beside the request file."
-        )
-    if not cover_letter_path.exists():
-        raise ValidationError(
-            "Expected tailored cover-letter Markdown not found. "
-            f"Create '{cover_letter_path.name}' beside the request file."
-        )
+# Note:
+# - The request .md lives in requests/ (one per job).
+# - The tailored resume.json + cover-letter.md are written by the generator directly into generated/<slug>/.
+# - This script only validates the request and snapshots it (as request.vNNN.md) into the generated job folder.
 
-    try:
-        payload = json.loads(resume_json_path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as error:
-        raise ValidationError(f"Resume JSON is invalid: {error}") from error
-
-    errors = validate_resume_payload(payload)
-    if errors:
-        joined = "\n- ".join(["Resume validation failed:"] + errors)
-        raise ValidationError(joined)
-
-    cover_letter_text = cover_letter_path.read_text(encoding="utf-8").strip()
-    if not cover_letter_text:
-        raise ValidationError("Cover-letter markdown is empty.")
-
-
-def build_package_command(
-    request_path,
-    resume_json_path,
-    cover_letter_path,
-    role,
-    company,
-    output_root,
-):
+def build_package_command(request_path, role, company, output_root):
     scripts_dir = Path(__file__).resolve().parent
     package_script = scripts_dir / "package_application.py"
 
     command = [
         sys.executable,
         str(package_script),
-        "--resume-input",
-        str(resume_json_path),
-        "--cover-letter-input",
-        str(cover_letter_path),
         "--role",
         role,
         "--request-file",
@@ -294,9 +260,9 @@ def build_package_command(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Validate a request package and run the application packaging pipeline."
+        description="Validate a request (from requests/) and record a versioned snapshot into the matching generated/<slug>/ folder. Resume/cover outputs are created separately inside generated/."
     )
-    parser.add_argument("--request", required=True, help="Path to request markdown file under requests/.")
+    parser.add_argument("--request", required=True, help="Path to request markdown file (under requests/ or elsewhere).")
     parser.add_argument("--output-root", default="generated", help="Generated output root folder.")
     args = parser.parse_args()
 
@@ -310,14 +276,8 @@ def main():
     inferred_company = infer_company_from_job_description(job_description)
     company = explicit_company or inferred_company
 
-    resume_json_path = request_path.with_suffix(".resume.json")
-    cover_letter_path = request_path.with_suffix(".cover-letter.md")
-    validate_input_artifacts(resume_json_path, cover_letter_path)
-
     command = build_package_command(
         request_path=request_path,
-        resume_json_path=resume_json_path,
-        cover_letter_path=cover_letter_path,
         role=role,
         company=company,
         output_root=args.output_root,
