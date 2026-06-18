@@ -45,66 +45,113 @@ The live request itself lives in `requests/<name>.md`. Snapshots of it may appea
 
 - Do not invent employers, titles, dates, technologies, metrics, customers, or project scope.
 - Do not claim direct ownership of work that is not supported by the master source.
-- Do not turn "AI-assisted" into the primary identity unless the user explicitly wants that angle.
+- Never add tools, platforms, or frameworks (Notion, Webflow, Salesforce, etc.) unless they are already present in data/master_resume.json.
 - Keep the resume ATS-friendly: standard headings, plain language, consistent dates, and no gimmicky copy.
 - Keep links valid and visible in the final resume output.
-- Keep the cover letter factual, targeted, and conservative.
+- Keep the cover letter factual, targeted, and conservative. Echo phrases only where evidence exists.
 - When generating resume, use black only for all text. Do not use other colors.
 - Just use different boldness and italic to differentiate fonts.
+- Always prefer the analysis output (or manual JD extraction) and run validation afterward.
 
 ## Allowed Tailoring Moves
 
-- Reorder sections to match the target role.
-- Reorder bullets so the strongest role-matching evidence appears first.
-- Combine or tighten original bullets when the meaning stays intact.
-- Lightly expand wording when the expansion is directly supported by source facts.
-- Change the headline and summary to emphasize the requested focus.
-- Drop less relevant project bullets to improve clarity.
-- Adjust the cover-letter tone and emphasis to match the role and company context provided by the user.
+- Reorder sections, bullets, and projects to surface strongest JD matches first.
+- Reorder skills categories/items to put mirrored keywords early.
+- Lightly rephrase using the *exact verbs and nouns* from the JD when the underlying fact from master supports it (e.g., change "Developed ... interfaces" → "Built production-grade React interfaces..." when "build" is in JD).
+- Combine or tighten bullets while preserving all numbers and meaning.
+- Update headline/summary to directly name the target role + top 2-4 JD keywords.
+- Drop low-relevance bullets/projects when it improves signal (never drop to hide gaps).
+- Adjust cover letter to specifically reference the role/company and echo JD language.
 
 ## Disallowed Moves
 
-- Fabricating leadership, architecture, or scale claims beyond the source.
-- Adding tools or frameworks not present in the master source.
-- Making unverified performance claims.
-- Rewriting in a way that changes the factual meaning of dates, responsibilities, or results.
-- Claiming motivation, personal background, or company knowledge that the prompt does not support.
+- Adding any tool, platform, or technology absent from master (Notion, Webflow, Zapier, etc.).
+- Inventing new metrics, "X% improvement", or scale claims.
+- Changing dates, titles, companies, or ownership.
+- Using JD keywords in a way that implies unsupported experience.
+- Over-claiming "expert" or leadership if not supported.
+- Generic hype that cannot be backed by specific master facts.
 
-## Tailoring Algorithm (for resume + cover letter stage)
+## Keyword-Driven Tailoring Algorithm (Best-Practice Version)
 
-### 1. Parse the request (the job description)
+This is the REQUIRED process. It directly implements proven methods:
+- Deep JD analysis (highlight repeated keywords, requirements, verbs)
+- Exact language mirroring (ATS + recruiter signal)
+- Evidence mapping + reorder for relevance
+- Strict fidelity to master source
+- Cover letter phrase echoing
 
-Read the chosen request file (prefer the versioned one from generated/ if it exists). Extract:
+### 0. Analyze the JD (use analysis artifact when available)
 
-- target role or hiring goal
-- company name if identifiable
-- strongest skills to highlight
-- domains to emphasize
-- sections or topics to compress
-- tone preference if provided
+1. Read the full request (`requests/<name>.md` or `generated/<slug>/request.vNNN.md`).
+2. **If present**, load `analysis.json` or `analysis.txt` produced by `scripts/analyze_job_description.py`.
+   - This gives: high_priority_keywords, exact_phrases, required items, key_verbs, responsibilities.
+3. Otherwise manually extract:
+   - Repeated or emphasized terms (skills, tools, domains, adjectives).
+   - Required vs preferred qualifications.
+   - Top action verbs and responsibility phrases.
+   - 3–8 exact phrases worth echoing verbatim (gold for cover letters).
+4. Write a short explicit list: "Must-mirror: X, Y, Z. Echo in cover: phraseA, phraseB."
 
-### 2. Select the best supporting evidence
+**Rule**: Prefer the exact wording from the JD when your master facts support it.
 
-Prioritize evidence in this order unless the user asks otherwise:
+### 1. Evidence mapping (two-column discipline)
 
-1. direct work experience that matches the target
-2. quantified project outcomes
-3. relevant systems, tools, and domains
-4. education and supporting background
+Create a quick mental or scratch map:
 
-### 3. Rewrite conservatively
+JD Requirement / Keyword                  | Best supporting fact from data/master_resume.json (only)
+------------------------------------------|------------------------------------------------------------
+"Build and iterate clickable prototypes"  | ALMA + HMS multi-tenant builds + reusable React components
+"No-code / low-code" + AI tools           | "AI-assisted workflow with Claude Opus, Codex, Gemini..." + prototyping speed
+"Organize projects / Notion / documentation" | GitHub Projects + custom PMS + sprint delivery across 6+ platforms
+"Research + synthesize"                   | Assessment/analytics modules + quantified outcomes
 
-- Prefer concise, specific bullets.
-- Lead with outcomes and systems, not generic responsibility phrasing.
-- Preserve numbers when present.
-- If a sentence gets longer, it must also get clearer.
+Prioritize in this strict order:
+1. Direct work experience bullets that match target.
+2. Quantified project outcomes (preserve numbers).
+3. Relevant tools/systems/domains exactly as named in master.
+4. Education + professional development (only if strong fit).
 
-### 4. Build the two actual output files (inside generated/)
+Drop or deprioritize anything with weak/no match.
 
-- Create a tailored resume JSON → `generated/<slug>/resume.json`
-- Create a tailored cover-letter Markdown → `generated/<slug>/cover-letter.md`
+### 2. Restructure + mirror language
 
-After writing them, the visual deliverables (html + pdf) are produced by running the build scripts with paths pointing inside that same `generated/<slug>/` folder.
+- **Headline**: Start with target role | 2-4 strongest mirrored keywords.
+- **Summary**: 1-2 short paragraphs. Include role title + 3+ high-priority keywords naturally in first paragraph.
+- **Experience**: Reorder bullets so the single strongest JD-aligned bullet is first for the current role. Use exact JD verbs ("build", "iterate", "organize", "research") where the meaning is supported.
+- **Projects**: Reorder + tighten so most relevant projects appear first. Update subtitle if it helps relevance.
+- **Skills**: Reorder categories and items so JD-matched skills appear early (Frontend first if web role, etc.). Never add tools absent from master.
+- Bullets must:
+  - Lead with outcome or system (not "Responsible for...").
+  - Use the JD's phrasing when truthful ("build and iterate clickable prototypes", "type-safe contracts", etc.).
+  - Keep all original metrics.
+
+### 3. Cover letter (exact phrase rule)
+
+The cover letter MUST:
+- Address the specific role and company (when known).
+- Naturally echo **at least three** exact phrases or keyword clusters from the JD (research shows this strongly improves response rates).
+- Point to 2–3 concrete, quantified proofs from your map.
+- Stay 3–5 short paragraphs, professional, conservative.
+
+Example good echo (when supported): "Build and iterate clickable prototypes using AI-powered platforms while maintaining structured project visibility."
+
+### 4. Write the files + self-verify
+
+Write:
+- `generated/<slug>/resume.json` (update meta.variant and meta.prompt_summary to reference the JD focus + keywords used)
+- `generated/<slug>/cover-letter.md`
+
+Before finishing, run this mental checklist:
+
+- [ ] All claims traceable to data/master_resume.json (no new employers, tools, dates, metrics, ownership).
+- [ ] High-priority JD keywords appear in headline, summary, and at least one early bullet.
+- [ ] At least 3 exact phrases or strong clusters echoed in the cover letter.
+- [ ] Strongest evidence ordered first (no burying matches).
+- [ ] No keyword stuffing — language stays natural and professional.
+- [ ] Run `python scripts/validate_tailoring.py --slug <slug>` and address any "MISSING" or "FIDELITY WARNINGS".
+
+After writing the two source files, the HTML/PDF are produced with the existing build commands.
 
 ## Tailored Resume JSON Structure
 
@@ -200,11 +247,14 @@ Use this section order unless the prompt suggests a better one:
 
 ## Suggestions By Prompt Type
 
+Use the keyword analysis to decide emphasis. Examples below assume common dev roles:
+
 ### Frontend-focused prompt
 
 - Lead with React, TypeScript, reusable components, dashboards, and frontend-backend contracts.
 - Favor ALMA and IoT dashboard work.
 - Move pure backend or lower-relevance ERP details lower unless they support the frontend story.
+- Mirror exact frontend-related verbs from JD (build, iterate, integrate).
 
 ### Fullstack prompt
 
@@ -216,14 +266,16 @@ Use this section order unless the prompt suggests a better one:
 - Emphasize multi-tenant systems, ERP modules, CI/CD, delivery across multiple platforms, and large data handling.
 - Keep quantified scale visible.
 
-## Final Checklist
+## Final Checklist (Run After Generation)
 
-Confirm:
+Confirm (and preferably run `python scripts/validate_tailoring.py --slug <slug>`):
 
-- every claim is traceable to `data/master_resume.json`
-- the summary / letter matches the request (job description)
-- the most relevant bullets appear first
-- the cover letter matches the target role and company context when known
-- The request .md lives in `requests/<name>.md`
-- The tailored sources were written to `generated/<slug>/resume.json` and `generated/<slug>/cover-letter.md`
-- All text uses black only (differentiate via boldness and italic, no colored text)
+- Every claim is traceable to `data/master_resume.json` (no new tools, numbers, employers, ownership).
+- High-priority keywords from the JD (or analysis.json) appear naturally in headline + summary + early bullets.
+- At least 3 exact JD phrases or strong clusters are echoed in the cover letter.
+- Strongest matching evidence is ordered first (bullets + projects).
+- The summary / letter matches the request focus and tone.
+- The request .md lives in `requests/<name>.md` and analysis (if generated) is next to the snapshot.
+- The tailored sources were written to `generated/<slug>/resume.json` and `generated/<slug>/cover-letter.md`.
+- All text uses black only (differentiate via boldness and italic, no colored text).
+- Validation report shows reasonable coverage with zero fidelity warnings.

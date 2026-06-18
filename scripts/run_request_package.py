@@ -260,7 +260,8 @@ def build_package_command(request_path, role, company, output_root):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Validate a request (from requests/) and record a versioned snapshot into the matching generated/<slug>/ folder. Resume/cover outputs are created separately inside generated/."
+        description="Validate a request (from requests/) and record a versioned snapshot into the matching generated/<slug>/ folder. Resume/cover outputs are created separately inside generated/. "
+                    "Best practice: after this, run scripts/analyze_job_description.py to produce keywords for accurate tailoring."
     )
     parser.add_argument("--request", required=True, help="Path to request markdown file (under requests/ or elsewhere).")
     parser.add_argument("--output-root", default="generated", help="Generated output root folder.")
@@ -294,6 +295,11 @@ def main():
 
     workspace = Path(__file__).resolve().parent.parent
     subprocess.run(command, check=True, cwd=workspace)
+
+    # Best-practice hint for accuracy (per researched tailoring workflow)
+    print("\nNext (for accurate keyword-driven tailoring):")
+    print(f"  python scripts/analyze_job_description.py --request {request_path} --output generated/<your-slug>/")
+    print("  Then generate resume/cover using prompt_guide.md + the analysis artifact.")
 
 
 if __name__ == "__main__":

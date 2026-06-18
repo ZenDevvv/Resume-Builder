@@ -1,0 +1,57 @@
+{
+  "role": "Web Developer",
+  "company": "OVATech OPC",
+  "high_priority_keywords": [
+    "no-code",
+    "low-code",
+    "Notion",
+    "Salesforce",
+    "HubSpot",
+    "Airtable",
+    "Webflow",
+    "Zapier",
+    "Make",
+    "product",
+    "development",
+    "project",
+    "research",
+    "maintain",
+    "workflows",
+    "web",
+    "tools",
+    "month",
+    "web development",
+    "support"
+  ],
+  "exact_phrases": [
+    "Ability to learn new technologies, tools",
+    "Build and iterate clickable prototypes",
+    "AI-powered platforms Continuously improve product prototypes",
+    "Conduct market, competitor, and industry research",
+    "Learn, test, and implement AI tools"
+  ],
+  "key_verbs": [
+    "build",
+    "collaborate",
+    "ensure",
+    "identify",
+    "implement",
+    "improve",
+    "iterate",
+    "maintain",
+    "manage",
+    "organize",
+    "research",
+    "support",
+    "synthesize",
+    "test",
+    "track"
+  ],
+  "categorized": {
+    "required": [],
+    "preferred": [],
+    "responsibilities": []
+  },
+  "source_length": 2889,
+  "analysis_text": "=== JOB DESCRIPTION ANALYSIS (use for precise tailoring) ===\nTarget Role: Web Developer\nCompany: OVATech OPC\n\nHIGH-PRIORITY KEYWORDS (mirror these exactly where truthful):\nno-code, low-code, Notion, Salesforce, HubSpot, Airtable, Webflow, Zapier, Make, product, development, project, research, maintain, workflows\n\nEXACT PHRASES TO ECHO (include 3+ naturally in cover letter + resume):\n- Ability to learn new technologies, tools\n- Build and iterate clickable prototypes\n- AI-powered platforms Continuously improve product prototypes\n- Conduct market, competitor, and industry research\n- Learn, test, and implement AI tools\n\nACTION VERBS TO MIRROR: build, collaborate, ensure, identify, implement, improve, iterate, maintain, manage, organize, research, support, synthesize, test, track\n\nGUIDANCE: Prioritize direct matches from master_resume.json. Reorder bullets so strongest evidence appears first. Use the exact words above in summary, bullets, and cover letter.\n=== END ANALYSIS ==="
+}

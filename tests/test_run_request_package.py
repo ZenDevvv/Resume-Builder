@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -102,3 +103,86 @@ class IntegrationFlowTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# --- New tests for analysis + validation support (lightweight smoke tests) ---
+
+class AnalyzeJobDescriptionSmokeTests(unittest.TestCase):
+    def test_analyze_extracts_keywords_and_phrases(self):
+        # Import inside test to avoid side effects on other modules during collection
+        from pathlib import Path
+        import sys as _sys
+        scripts_dir = Path(__file__).resolve().parents[1] / "scripts"
+        if str(scripts_dir) not in _sys.path:
+            _sys.path.insert(0, str(scripts_dir))
+        import analyze_job_description as ajd
+
+        jd = (
+            "We are looking for a Web Developer. "
+            "Build and iterate clickable prototypes using no-code and low-code platforms. "
+            "Experience with Notion, research, and AI tools is required. "
+            "Conduct market research and organize project documentation."
+        )
+        analysis = ajd.analyze_request_or_text(jd_text=jd)
+        self.assertIn("high_priority_keywords", analysis)
+        self.assertTrue(len(analysis["high_priority_keywords"]) > 3)
+        # Should pick up key repeated/important terms
+        joined = " ".join(analysis["high_priority_keywords"]).lower()
+        self.assertTrue(any(k in joined for k in ["prototype", "research", "notion", "no-code"]))
+        self.assertIn("analysis_text", analysis)
+
+    def test_analyze_from_request_file(self):
+        import tempfile
+        from pathlib import Path
+        import sys as _sys
+        scripts_dir = Path(__file__).resolve().parents[1] / "scripts"
+        if str(scripts_dir) not in _sys.path:
+            _sys.path.insert(0, str(scripts_dir))
+        import analyze_job_description as ajd
+        import run_request_package as runner
+
+        with tempfile.TemporaryDirectory() as tmp:
+            req = Path(tmp) / "req.md"
+            req.write_text(
+                "---\nrole: Test Role\ncompany: Acme\n---\n\n"
+                "## Job Description\n"
+                "Build prototypes. Use React and AI tools. Research and organize knowledge.\n",
+                encoding="utf-8",
+            )
+            analysis = ajd.analyze_request_or_text(request_path=req)
+            self.assertEqual(analysis.get("role"), "Test Role")
+            self.assertIn("high_priority_keywords", analysis)
+
+
+class ValidateTailoringSmokeTests(unittest.TestCase):
+    def test_validate_runs_without_crashing_on_minimal_inputs(self):
+        import tempfile
+        from pathlib import Path
+        import sys as _sys
+        scripts_dir = Path(__file__).resolve().parents[1] / "scripts"
+        if str(scripts_dir) not in _sys.path:
+            _sys.path.insert(0, str(scripts_dir))
+        import validate_tailoring as vt
+
+        with tempfile.TemporaryDirectory() as tmp:
+            # Minimal resume
+            resume_p = Path(tmp) / "resume.json"
+            resume_p.write_text(json.dumps({
+                "headline": "Web Developer | React",
+                "summary": ["Built prototypes using React and AI-assisted tools."],
+                "experience": [{"company": "Uzaro Solutions Technology Inc.", "date_range": "Now", "bullets": ["Built things"]}],
+                "projects": [{"name": "ALMA", "bullets": ["Multi-tenant"]}],
+                "skills": {"Frontend": ["React"]},
+                "education": [{"school": "Uni"}],
+                "basics": {"name": "Test", "location": "", "phone": "", "email": "", "links": []}
+            }), encoding="utf-8")
+
+            cover_p = Path(tmp) / "cover.md"
+            cover_p.write_text("I can build prototypes and conduct research using AI tools.", encoding="utf-8")
+
+            jd = "Build prototypes. Conduct research. Use AI tools and React."
+
+            # Should not raise
+            result = vt.validate(resume_path=resume_p, cover_path=cover_p, request_path=None, jd_text=jd)
+            self.assertIn("coverage_percent", result)
+            self.assertIn("overall", result)

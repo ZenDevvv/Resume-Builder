@@ -12,7 +12,7 @@ This workspace is a prompt-driven system where:
 - `data/master_resume.json`
   Canonical source of truth. Keep factual.
 - `prompt_guide.md`
-  Tailoring rules and guardrails.
+  Tailoring rules and guardrails (now includes the full Keyword-Driven Tailoring Algorithm).
 - `instructions/auto_builder_prompt.md`
   Standard execution prompt for agent-style AI.
 - `requests/request_template.md`
@@ -23,6 +23,12 @@ This workspace is a prompt-driven system where:
   Validates a request and records a versioned snapshot (`request.vNNN.md`) into the corresponding generated/ folder.
 - `scripts/package_application.py`
   Low-level helper that creates the job folder under generated/ and writes the request snapshot.
+- `scripts/analyze_job_description.py` + `scripts/validate_tailoring.py`
+  Tools that extract JD keywords/phrases and verify post-generation accuracy (coverage + fidelity).
+- `scripts/analyze_job_description.py`
+  Extracts high-priority keywords, exact phrases, responsibilities, and requirements from the JD. Produces analysis.json + readable summary used to drive accurate tailoring.
+- `scripts/validate_tailoring.py`
+  After generation, reports keyword coverage %, echoed phrases in cover letter, and fidelity warnings vs master. Use this to verify accuracy.
 
 ## Typical Usage (Two-Stage)
 
@@ -42,15 +48,31 @@ python scripts/run_request_package.py --request requests/<name>.md
 
    This creates `generated/<slug>/` and writes `request.vNNN.md` (history of the job request).
 
+3. **Analyze the job description for accurate tailoring** (new best-practice step):
+
+```powershell
+python scripts/analyze_job_description.py --request requests/<name>.md --output generated/<slug>/
+```
+
+   This produces `analysis.json` and `analysis.txt` with high_priority_keywords and exact_phrases. The AI must use these for mirroring.
+
 **Stage 2 – Generate resume + cover letter (outputs go into generated/)**
 
-3. In a separate prompt, point the agent at the request you just created (e.g. `requests/ovatech-web-developer.md` or the snapshot in generated) and say "generate the resume and cover letter for this job. Place the outputs inside the generated company folder."
+4. In a separate prompt, point the agent at the request + analysis and say "generate the resume and cover letter for this job using the Keyword-Driven Tailoring Algorithm in prompt_guide.md. Place the outputs inside the generated company folder."
 
    The agent produces (directly under the job folder):
    - `generated/<slug>/resume.json`
    - `generated/<slug>/cover-letter.md`
 
-4. Build the visual outputs (HTML + PDF) from the sources that now live in generated/:
+5. (Strongly recommended) Validate tailoring accuracy:
+
+```powershell
+python scripts/validate_tailoring.py --slug <slug>
+```
+
+   Review the coverage report and fix gaps if needed by regenerating with better evidence mapping.
+
+6. Build the visual outputs (HTML + PDF) from the sources that now live in generated/:
 
 ```powershell
 python scripts/build_resume.py --input generated/<slug>/resume.json --output-html generated/<slug>/resume.html
@@ -60,6 +82,19 @@ python scripts/render_pdf.py --html generated/<slug>/resume.html --pdf generated
 ```
 
 Each request in `requests/` represents one job/company. All deliverables for that job live together in the matching `generated/<slug>/` folder.
+
+## Accuracy & Best-Practice Tailoring (New Workflow)
+
+To produce resumes and cover letters that are accurately fitted:
+
+- Always run analysis before generation (gives objective keywords + exact phrases to mirror).
+- The AI follows the detailed Keyword-Driven Tailoring Algorithm (see `prompt_guide.md`).
+- After generation, always run the validator. Aim for:
+  - Reasonable keyword coverage (exact terms from JD appear).
+  - ≥3 exact phrase echoes in the cover letter.
+  - Zero fidelity warnings (no invented tools/metrics).
+- The validator + analysis make the tailoring auditable and repeatable.
+- This process directly applies industry best practices for ATS + human review.
 
 ## Request File Contract
 

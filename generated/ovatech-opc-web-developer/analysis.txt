@@ -1,0 +1,18 @@
+=== JOB DESCRIPTION ANALYSIS (use for precise tailoring) ===
+Target Role: Web Developer
+Company: OVATech OPC
+
+HIGH-PRIORITY KEYWORDS (mirror these exactly where truthful):
+no-code, low-code, Notion, Salesforce, HubSpot, Airtable, Webflow, Zapier, Make, product, development, project, research, maintain, workflows
+
+EXACT PHRASES TO ECHO (include 3+ naturally in cover letter + resume):
+- Ability to learn new technologies, tools
+- Build and iterate clickable prototypes
+- AI-powered platforms Continuously improve product prototypes
+- Conduct market, competitor, and industry research
+- Learn, test, and implement AI tools
+
+ACTION VERBS TO MIRROR: build, collaborate, ensure, identify, implement, improve, iterate, maintain, manage, organize, research, support, synthesize, test, track
+
+GUIDANCE: Prioritize direct matches from master_resume.json. Reorder bullets so strongest evidence appears first. Use the exact words above in summary, bullets, and cover letter.
+=== END ANALYSIS ===
