@@ -1,0 +1,26 @@
+=== JOB DESCRIPTION ANALYSIS (use for precise tailoring) ===
+Target Role: Web Developer
+Company: PETNET
+
+HIGH-PRIORITY KEYWORDS (mirror these exactly where truthful):
+API, make, React, MongoDB, Github, developer, financial, services, hybrid, full, web developer, delivery, stack, petnet, node.js
+
+EXACT PHRASES TO ECHO (include 3+ naturally in cover letter + resume):
+- Web Developer | Hybrid PETNET, INC
+- Professional Growth: We foster a culture of continuous learning and personal development
+- How many years' experience do you have as a web developer
+- Target the Full Stack Developer position slot where possible
+- Eagerness to learn new codebases, research
+
+KEY RESPONSIBILITIES (lead with matching evidence):
+- Strong match on React (frontend), Node.js (v12+), MySQL for full-stack requirements
+- Experience creating and integrating REST APIs
+- Database modeling and implementing business logic (use MySQL + Prisma/MongoDB evidence
+- Using Git/GitHub for repository work and team collaboration
+- Working in Agile/Scrum team environments, participating in meetings, sprint delivery
+- Eagerness to learn new codebases, research, and continuous improvement (highlight self-study + production delivery
+
+ACTION VERBS TO MIRROR: research, support
+
+GUIDANCE: Prioritize direct matches from master_resume.json. Reorder bullets so strongest evidence appears first. Use the exact words above in summary, bullets, and cover letter.
+=== END ANALYSIS ===

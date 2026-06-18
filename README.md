@@ -34,7 +34,13 @@ This workspace is a prompt-driven system where:
 
 **Stage 1 – Create the request (one .md per job in requests/)**
 
-1. Prompt the agent with the pasted job description.  
+1. Prompt the agent:
+
+   ```
+   create request about this job description
+   <paste the full job description here>
+   ```
+
    The agent creates **one request markdown** under `requests/` (copy `request_template.md` first).
 
    Example result:
@@ -58,7 +64,13 @@ python scripts/analyze_job_description.py --request requests/<name>.md --output 
 
 **Stage 2 – Generate resume + cover letter (outputs go into generated/)**
 
-4. In a separate prompt, point the agent at the request + analysis and say "generate the resume and cover letter for this job using the Keyword-Driven Tailoring Algorithm in prompt_guide.md. Place the outputs inside the generated company folder."
+4. In a separate prompt, use the auto builder:
+
+   ```
+   use @instructions\auto_builder_prompt.md using @requests/ovatech-web-developer.md
+   ```
+
+   (The auto builder prompt tells the agent to read the required files: `data/master_resume.json`, `prompt_guide.md`, the request, and the analysis artifact, then write `resume.json` and `cover-letter.md` inside the matching `generated/<slug>/` folder.)
 
    The agent produces (directly under the job folder):
    - `generated/<slug>/resume.json`

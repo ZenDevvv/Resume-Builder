@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "variant": "fullstack-web-developer",
+    "target_role": "Web Developer",
+    "target_company": "PETNET",
+    "source": "data/master_resume.json",
+    "prompt_summary": "Tailored for PETNET Web Developer | Hybrid (targeting Full Stack slot). Prioritizes API creation and integration, React + Node.js + MySQL full-stack capabilities, database logic and business rules, GitHub collaboration, Agile team delivery, sprint participation, and rapid codebase learning. Mirrors high-priority JD keywords while staying strictly faithful to master facts."
+  },
+  "basics": {
+    "name": "Zen Andrei Obrero",
+    "location": "Dasmarinas, Cavite",
+    "phone": "09068575015",
+    "email": "zenandreiobrero777@gmail.com",
+    "links": [
+      {
+        "label": "Portfolio",
+        "url": "https://zendev-portfolio.netlify.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ZenDevvv"
+      }
+    ]
+  },
+  "headline": "Web Developer | React, Node.js, API Development, MySQL",
+  "summary": [
+    "Full stack developer experienced with React, Node.js, and MySQL who builds and integrates APIs and creates database logic incorporating business rules. Experienced delivering production web applications in fast-paced environments using Git and GitHub while collaborating with teams in Agile settings.",
+    "Recent Computer Science graduate (With Honors) who is eager to learn new codebases and continuously improve coding skills. Comfortable contributing in hybrid work arrangements and committed to supporting PETNET's digital transformation and financial services initiatives."
+  ],
+  "experience": [
+    {
+      "company": "Uzaro Solutions Technology Inc.",
+      "location": "Quezon City",
+      "role": "Technology Developer",
+      "date_range": "Nov 2024 - Present",
+      "bullets": [
+        "Integrated devices and services via REST APIs into a centralized React dashboard, creating and supporting APIs for real-time control and monitoring across 50+ endpoints with sub-500ms response latency.",
+        "Designed backend data models in MongoDB and Prisma (with MySQL experience) that unified frontend-backend contracts and incorporated business rules for multi-tenant systems across IoT, education, and ERP domains.",
+        "Drove sprint delivery across 6+ concurrent platform builds using GitHub Projects and a custom PMS in an Agile environment, participating in planning discussions, conducting code reviews on team PRs, and accelerating delivery while maintaining engineering rigor.",
+        "Authored unit and integration tests in Jest and managed CI/CD pipelines via GitHub Actions, while rapidly learning and improving code across multiple production platforms."
+      ]
+    },
+    {
+      "company": "IPSolutions Inc.",
+      "location": "Pasig City",
+      "role": "IT Intern",
+      "date_range": "Mar 2024 - May 2024",
+      "bullets": [
+        "Designed and delivered 3 responsive client-facing landing pages using HTML, CSS, and Bootstrap, collaborating with the development team and passing cross-browser QA on first review.",
+        "Gained experience implementing features following SDLC best practices and Git-based team workflows while supporting internal web development tasks."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "ALMA (Alternative Learning Management App)",
+      "subtitle": "Multi-tenant LMS with React, Node.js, and MySQL-compatible data layer",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Prisma ORM",
+        "Zod",
+        "JWT"
+      ],
+      "bullets": [
+        "Architected and built a full-stack multi-tenant LMS with role-based access, implementing tenant-isolated data schemas, JWT authentication, and backend APIs for 3 organizational tenants serving 200+ student accounts.",
+        "Developed assessment engine and gradebook modules with automatic scoring and analytics, creating database logic and business rules that reduced manual grading workload for 15+ instructors across 40+ classes.",
+        "Delivered real-time attendance tracking and reporting features through coordinated frontend-backend work using Node.js APIs and React interfaces."
+      ]
+    },
+    {
+      "name": "ERP Platform Suite (Uzaro Solutions)",
+      "subtitle": "Interconnected full-stack enterprise modules",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Prisma ORM",
+        "REST APIs"
+      ],
+      "bullets": [
+        "Architected and developed multiple interconnected full-stack ERP modules with React frontends and Node.js backends, including HRIS handling 6,000+ employee records and GS1-compliant inventory with real-time stock rules and alerts.",
+        "Built e-commerce order lifecycle and supply chain modules, implementing database logic, business rules, and REST API endpoints for buyer, vendor, and admin workflows.",
+        "Contributed project management and supply chain features that integrated with inventory and order systems for end-to-end delivery."
+      ]
+    },
+    {
+      "name": "HMS Reservation System",
+      "subtitle": "Multi-tenant Hotel Management",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Prisma ORM"
+      ],
+      "bullets": [
+        "Built a full-stack multi-tenant hotel management system with React and Node.js, enabling management of rooms, dynamic pricing rules, users, and full reservation lifecycle.",
+        "Designed tenant-isolated data architecture and core booking functionality with business rules for pricing and availability."
+      ]
+    }
+  ],
+  "skills": {
+    "Frontend": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "HTML/CSS",
+      "Zustand",
+      "TanStack Query"
+    ],
+    "Backend": [
+      "Node.js",
+      "Express",
+      "REST API Design",
+      "JWT Authentication",
+      "Zod"
+    ],
+    "Databases & ORM": [
+      "MySQL",
+      "MongoDB",
+      "Prisma ORM"
+    ],
+    "Testing": [
+      "Jest",
+      "Playwright"
+    ],
+    "DevOps & Deployment": [
+      "Git",
+      "GitHub",
+      "GitHub Actions (CI/CD)",
+      "Firebase Hosting",
+      "Docker"
+    ],
+    "Project Management & Collaboration": [
+      "Agile/Scrum",
+      "GitHub Projects"
+    ],
+    "Languages": [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Java",
+      "C++",
+      "PHP"
+    ]
+  },
+  "education": [
+    {
+      "school": "Biliran Province State University",
+      "location": "Naval, Biliran",
+      "degree": "Bachelor of Science in Computer Science",
+      "honors": "With Honors",
+      "graduation": "Graduated May 2024",
+      "bullets": [
+        "Algolympics Champion - 1st Place, campus-wide algorithm programming contest (2nd Year).",
+        "Relevant coursework: Data Structures & Algorithms, Database Systems, Software Engineering, Object-Oriented Programming."
+      ]
+    }
+  ]
+}

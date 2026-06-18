@@ -1,0 +1,54 @@
+{
+  "role": "Web Developer",
+  "company": "PETNET",
+  "high_priority_keywords": [
+    "API",
+    "make",
+    "React",
+    "MongoDB",
+    "Github",
+    "developer",
+    "financial",
+    "services",
+    "hybrid",
+    "full",
+    "web developer",
+    "delivery",
+    "stack",
+    "petnet",
+    "node.js",
+    "mysql",
+    "information",
+    "have",
+    "growth",
+    "full stack"
+  ],
+  "exact_phrases": [
+    "Web Developer | Hybrid PETNET, INC",
+    "Professional Growth: We foster a culture of continuous learning and personal development",
+    "How many years' experience do you have as a web developer",
+    "Target the Full Stack Developer position slot where possible",
+    "Eagerness to learn new codebases, research"
+  ],
+  "key_verbs": [
+    "research",
+    "support"
+  ],
+  "categorized": {
+    "required": [],
+    "preferred": [],
+    "responsibilities": [
+      "Strong match on React (frontend), Node.js (v12+), MySQL for full-stack requirements",
+      "Experience creating and integrating REST APIs",
+      "Database modeling and implementing business logic (use MySQL + Prisma/MongoDB evidence",
+      "Using Git/GitHub for repository work and team collaboration",
+      "Working in Agile/Scrum team environments, participating in meetings, sprint delivery",
+      "Eagerness to learn new codebases, research, and continuous improvement (highlight self-study + production delivery",
+      "Hybrid work readiness and fast-paced multi-project delivery experience",
+      "Clean communication, analytical skills, and attention to detail demonstrated in deliverables",
+      "Recent Computer Science graduate with honors who is already shipping production full-stack platforms"
+    ]
+  },
+  "source_length": 5867,
+  "analysis_text": "=== JOB DESCRIPTION ANALYSIS (use for precise tailoring) ===\nTarget Role: Web Developer\nCompany: PETNET\n\nHIGH-PRIORITY KEYWORDS (mirror these exactly where truthful):\nAPI, make, React, MongoDB, Github, developer, financial, services, hybrid, full, web developer, delivery, stack, petnet, node.js\n\nEXACT PHRASES TO ECHO (include 3+ naturally in cover letter + resume):\n- Web Developer | Hybrid PETNET, INC\n- Professional Growth: We foster a culture of continuous learning and personal development\n- How many years' experience do you have as a web developer\n- Target the Full Stack Developer position slot where possible\n- Eagerness to learn new codebases, research\n\nKEY RESPONSIBILITIES (lead with matching evidence):\n- Strong match on React (frontend), Node.js (v12+), MySQL for full-stack requirements\n- Experience creating and integrating REST APIs\n- Database modeling and implementing business logic (use MySQL + Prisma/MongoDB evidence\n- Using Git/GitHub for repository work and team collaboration\n- Working in Agile/Scrum team environments, participating in meetings, sprint delivery\n- Eagerness to learn new codebases, research, and continuous improvement (highlight self-study + production delivery\n\nACTION VERBS TO MIRROR: research, support\n\nGUIDANCE: Prioritize direct matches from master_resume.json. Reorder bullets so strongest evidence appears first. Use the exact words above in summary, bullets, and cover letter.\n=== END ANALYSIS ==="
+}
