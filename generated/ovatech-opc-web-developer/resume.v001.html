@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zen Andrei Obrero Resume</title>
+  <style>
+:root {
+  --ink: #13212f;
+  --muted: #506274;
+  --accent: #0f5fa8;
+  --accent-soft: #d9ebfb;
+  --line: #d3dde8;
+  --page: #ffffff;
+  --panel: #f5f8fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #edf3f8;
+  color: var(--ink);
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.45;
+}
+
+body {
+  padding: 28px;
+}
+
+.resume-page {
+  width: 8.27in;
+  min-height: 11.69in;
+  margin: 0 auto;
+  background: var(--page);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(13, 35, 58, 0.08);
+  padding: 44px 46px 42px;
+}
+
+.hero {
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--accent-soft);
+  margin-bottom: 22px;
+}
+
+.hero-name {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.hero-headline {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-meta {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hero-links {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.hero-link span {
+  color: var(--muted);
+  font-weight: 550;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  gap: 18px;
+  padding: 12px 0 14px;
+  border-top: 1px solid var(--line);
+}
+
+.section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.section-kicker {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.summary-paragraph {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.summary-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.entry {
+  margin-bottom: 16px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.entry-title {
+  font-size: 15px;
+  font-weight: 740;
+  color: var(--ink);
+}
+
+.entry-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.entry-date {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.entry-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.entry-list li {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+.entry-list li:last-child {
+  margin-bottom: 0;
+}
+
+.project-name {
+  font-size: 14px;
+  font-weight: 730;
+  color: var(--ink);
+}
+
+.project-subtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.skills-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.skill-label {
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.skill-value {
+  color: var(--ink);
+  font-size: 12.5px;
+}
+
+.education-meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+@page {
+  size: A4;
+  margin: 0.35in;
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .resume-page {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <main class="resume-page">
+    <header class="hero">
+      
+    <h1 class="hero-name">Zen Andrei Obrero</h1>
+    <div class="hero-headline">Web Developer | React, TypeScript, AI-Assisted Prototyping, Structured Delivery</div>
+    <div class="hero-meta">Dasmarinas, Cavite | 09068575015 | zenandreiobrero777@gmail.com</div>
+    <div class="hero-links"><a class="hero-link" href="https://zendev-portfolio.netlify.app/">Portfolio<span>https://zendev-portfolio.netlify.app/</span></a><a class="hero-link" href="https://github.com/ZenDevvv">GitHub<span>https://github.com/ZenDevvv</span></a></div>
+    
+    </header>
+
+    <section class="section">
+      <div class="section-kicker">Profile</div>
+      <div class="section-body">
+        <p class="summary-paragraph">Web developer and frontend-focused fullstack engineer with production experience in React, TypeScript, Node.js, and MongoDB, building enterprise interfaces and multi-tenant systems with reusable UI patterns and type-safe contracts.</p><p class="summary-paragraph">Delivers work through an organized, collaborative workflow that combines GitHub Projects, a custom PMS tool, CI/CD, Jest testing, and AI-assisted scaffolding with Claude Opus, Codex, and Gemini Pro 3.</p><p class="summary-paragraph">Brings practical experience translating requirements into responsive web screens, prototypes, and production-ready interfaces across education, hotel management, ERP, and IoT products.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Experience</div>
+      <div class="section-body">
+        
+    <article class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Uzaro Solutions Technology Inc.</div>
+          <div class="entry-subtitle">Technology Developer | Quezon City</div>
+        </div>
+        <div class="entry-date">Nov 2024 - Present</div>
+      </div>
+      <ul class="entry-list"><li>Developed production-grade frontend interfaces and reusable component libraries using React and TypeScript, establishing shared design patterns and type-safe contracts adopted across 8+ company-wide projects.</li><li>Drove sprint delivery across 6+ concurrent platform builds in IoT, LMS, HMS, HRIS, Inventory, and Order Management using GitHub Projects and a custom-built PMS in an Agile environment, accelerating delivery through AI-assisted prototyping and scaffolding with Claude Opus, Codex, and Gemini Pro 3.</li><li>Designed backend data models in MongoDB and Prisma that aligned frontend-backend contracts, managed CI/CD pipelines via GitHub Actions with Firebase deployment, and authored Jest unit and integration tests that reduced post-release bug reports by about 25%.</li><li>Integrated smart door locks, switch and outlet relays, and IoT gateways via REST APIs into a centralized React dashboard, enabling real-time device control and monitoring for 50+ connected endpoints with sub-500ms response latency.</li></ul>
+    </article>
+    
+    <article class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">IPSolutions Inc.</div>
+          <div class="entry-subtitle">IT Intern | Pasig City</div>
+        </div>
+        <div class="entry-date">Mar 2024 - May 2024</div>
+      </div>
+      <ul class="entry-list"><li>Designed and delivered 3 responsive client-facing landing pages including the company&#x27;s main website using HTML, CSS, and Bootstrap, with each page passing cross-browser QA on first review during the 3-month internship.</li><li>Collaborated with the development team to implement features following SDLC best practices, gaining foundational experience in Git-based versioning and team delivery workflows.</li></ul>
+    </article>
+    
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Selected Projects</div>
+      <div class="section-body">
+        
+    <article class="entry">
+      <div class="project-name">ALMA (Alternative Learning Management App)</div>
+      <div class="project-subtitle">Multi-tenant LMS</div>
+      <ul class="entry-list"><li>Architected a multi-tenant LMS serving 3 organizational tenants with role-based access for admins, instructors, and 200+ student accounts, implementing tenant-isolated data schemas and JWT-based authentication.</li><li>Built an assessment engine with automatic quiz scoring, grade computation, and analytics dashboards tracking learner performance across courses, reducing manual grading workload for instructors.</li><li>Developed attendance tracking and gradebook modules used by 15+ instructors across 40+ classes, enabling real-time class record management and automated academic report generation per tenant.</li></ul>
+    </article>
+    
+    <article class="entry">
+      <div class="project-name">HMS Reservation System</div>
+      <div class="project-subtitle">Hotel management prototype</div>
+      <ul class="entry-list"><li>Built a multi-tenant hotel management system enabling organizations to manage rooms, pricing, users, and reservations with tenant-isolated data architecture.</li><li>Designed and implemented core booking functionality including room type configuration, dynamic pricing rules, and full reservation lifecycle management from search to checkout.</li></ul>
+    </article>
+    
+    <article class="entry">
+      <div class="project-name">ERP Platform Suite (Uzaro Solutions)</div>
+      <div class="project-subtitle">Enterprise product modules</div>
+      <ul class="entry-list"><li>Architected and developed interconnected ERP modules as part of a multi-tenant enterprise platform.</li><li>Built an HRIS module covering payroll, time management, onboarding, attendance, and personnel records, handling 6,000+ employee records with role-scoped visibility across tenants.</li><li>Developed a GS1-compliant inventory system with barcode and SKU identification, real-time stock tracking, and low-stock alerting, reducing manual stock audit time and enabling automated procurement triggers.</li></ul>
+    </article>
+    
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Technical Skills</div>
+      <div class="section-body">
+        <div class="skills-grid">
+            <div class="skill-row">
+              <div class="skill-label">Frontend</div>
+              <div class="skill-value">React, TypeScript, Next.js, Tailwind CSS, Bootstrap, HTML/CSS, Zustand, TanStack Query, Socket.io</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Project Management</div>
+              <div class="skill-value">GitHub Projects, Custom PMS Tool, Agile/Scrum</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">AI-Augmented Workflow</div>
+              <div class="skill-value">Claude Opus 4.6 (architecture, guidelines, prompt engineering), Codex (backend logic, code generation), Google Stitch / Gemini Pro 3 (UI/UX prototyping)</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Backend</div>
+              <div class="skill-value">Node.js, Express, REST API Design, JWT Authentication, Zod</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Testing</div>
+              <div class="skill-value">Jest, Playwright</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">DevOps &amp; Deployment</div>
+              <div class="skill-value">Git, GitHub, GitHub Actions (CI/CD), Firebase Hosting, Docker</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Databases &amp; ORM</div>
+              <div class="skill-value">MongoDB, MySQL, Prisma ORM</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Languages</div>
+              <div class="skill-value">TypeScript, JavaScript, Python, Java, C++, PHP</div>
+            </div>
+            
+            <div class="skill-row">
+              <div class="skill-label">Domain Experience</div>
+              <div class="skill-value">IoT Smart Devices, Education/LMS, Hotel Management, ERP (HRIS, Inventory/GS1, Order Management, Supply Chain, Project Management)</div>
+            </div>
+            </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Education</div>
+      <div class="section-body">
+        
+            <article class="entry">
+              <div class="entry-header">
+                <div>
+                  <div class="entry-title">Biliran Province State University</div>
+                  <div class="education-meta">Naval, Biliran</div>
+                </div>
+              </div>
+              <div class="entry-subtitle">Bachelor of Science in Computer Science | With Honors | Graduated May 2024</div>
+              <ul class="entry-list"><li>Algolympics Champion - 1st Place, campus-wide algorithm programming contest (2nd Year).</li><li>Relevant coursework: Data Structures &amp; Algorithms, Database Systems, Software Engineering, Object-Oriented Programming.</li></ul>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+</body>
+</html>

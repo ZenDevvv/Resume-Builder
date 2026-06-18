@@ -37,6 +37,8 @@ Examples:
 - Keep the resume ATS-friendly: standard headings, plain language, consistent dates, and no gimmicky copy.
 - Keep links valid and visible in the final resume output.
 - Keep the cover letter factual, targeted, and conservative.
+- When generating resume, use black only for all text. Do not use other colors.
+- Just use different boldness and italic to differentiate fonts.
 
 ## Allowed Tailoring Moves
 
@@ -211,3 +213,4 @@ Before building the PDFs, confirm:
 - the cover letter matches the target role and company context when known
 - the final JSON and Markdown are complete
 - the outputs are stored in the correct package folder and version
+- all text uses black only (differentiate via boldness and italic, no colored text)

@@ -26,6 +26,7 @@ The resume JSON must satisfy the renderer contract used by `scripts/build_resume
 - Do not invent employers, titles, dates, metrics, tools, customers, or ownership.
 - Tailor order and wording conservatively based on request and job description.
 - Keep links valid.
+- Follow visual design rules from prompt_guide.md (black text only; differentiate with boldness/italic).
 
 ## Packaging Command
 

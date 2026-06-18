@@ -1,5 +1,5 @@
 :root {
-  --ink: #13212f;
+  --ink: #000000;
   --muted: #506274;
   --accent: #0f5fa8;
   --accent-soft: #d9ebfb;
@@ -38,7 +38,7 @@ body {
 
 .hero {
   padding-bottom: 22px;
-  border-bottom: 2px solid var(--accent-soft);
+  border-bottom: 2px solid var(--line);
   margin-bottom: 22px;
 }
 
@@ -54,15 +54,17 @@ body {
 .hero-headline {
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 650;
-  color: var(--accent);
+  font-weight: 700;
+  color: var(--ink);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .hero-meta {
   margin-top: 12px;
-  color: var(--muted);
+  color: #000000;
+  font-weight: 400;
+  font-style: italic;
   font-size: 12px;
 }
 
@@ -80,15 +82,16 @@ body {
   padding: 5px 10px;
   border-radius: 999px;
   background: var(--panel);
-  color: var(--accent);
+  color: #000000;
   text-decoration: none;
   font-size: 11px;
   font-weight: 650;
 }
 
 .hero-link span {
-  color: var(--muted);
-  font-weight: 550;
+  color: #000000;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .section {
@@ -105,7 +108,7 @@ body {
 }
 
 .section-kicker {
-  color: var(--accent);
+  color: #000000;
   font-size: 11px;
   font-weight: 750;
   letter-spacing: 0.12em;
@@ -146,13 +149,17 @@ body {
 }
 
 .entry-subtitle {
-  color: var(--muted);
+  color: #000000;
+  font-weight: 400;
+  font-style: italic;
   font-size: 12px;
   margin-top: 2px;
 }
 
 .entry-date {
-  color: var(--muted);
+  color: #000000;
+  font-weight: 400;
+  font-style: italic;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -181,7 +188,9 @@ body {
 .project-subtitle {
   margin-top: 2px;
   font-size: 12px;
-  color: var(--muted);
+  color: #000000;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .skills-grid {
@@ -197,7 +206,7 @@ body {
 }
 
 .skill-label {
-  color: var(--accent);
+  color: #000000;
   font-size: 11.5px;
   font-weight: 750;
   letter-spacing: 0.04em;
@@ -210,7 +219,9 @@ body {
 }
 
 .education-meta {
-  color: var(--muted);
+  color: #000000;
+  font-weight: 400;
+  font-style: italic;
   font-size: 12px;
   margin-top: 2px;
 }
